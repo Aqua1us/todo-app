@@ -8,7 +8,7 @@
 export default {
   data: function () {
     return {
-      message: "Hello Vue!"
+      message: "Vue.js を使って何か作ります"
     }
   }
 }
