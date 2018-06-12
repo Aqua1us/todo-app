@@ -1,26 +1,29 @@
-  .margin-default {
-    margin-top: 30px;
-  }
-  .padding-default {
-    padding-left: 20px;
-  }
-  .word-color-black {
-    color: #000000;
-  }
-  .collection-item:hover {
-    background-color: #ddd;
-  }
-  .display_none {
+[v-cloak] {
     display: none;
-  }
-  .line-through {
+}
+.margin-default {
+    margin-top: 30px;
+}
+.padding-default {
+    padding-left: 20px;
+}
+.word-color-black {
+    color: #000000;
+}
+.collection-item:hover {
+    background-color: #ddd;
+}
+.display_none {
+    display: none;
+}
+.line-through {
     text-decoration: line-through;
-  }
-  .btn-custom {
+}
+.btn-custom {
     text-transform: none;
     padding: 0 10px;
     font-size: 0.8rem;
     background-color: white;
     color: black;
     border-color: black;
-  }
+}
