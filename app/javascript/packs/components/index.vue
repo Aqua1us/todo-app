@@ -7,8 +7,8 @@
         <input v-model="newTask" id="new-task-form" class="form-control padding-default" placeholder="Add your task!!">
       </div>
       <div class="col s2 m1">
-        <button class="btn-floating waves-effect waves-light red" v-on:click="createTask">
-          <i class="material-icons">add</i>
+        <button class="btn-floating waves-effect waves-light " v-on:click="createTask">
+          <i class="material-icons">create</i>
         </button>
       </div>
     </div>
