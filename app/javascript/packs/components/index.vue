@@ -25,7 +25,7 @@
       </ul>
     </div>
     <!-- 完了済みタスク表示ボタン -->
-    <button class="btn btn-custom" v-on:click="displayFinishedTasks">Display finished tasks</button>
+    <button class="btn btn-custom" v-on:click="displayFinishedTasks">完了済みタスク</button>
     <!-- 完了済みタスク一覧 -->
     <div id="finished-tasks" class="display_none">
       <ul class="collection">
@@ -97,6 +97,7 @@
         var li = document.querySelector('#finished-tasks > ul > li:first-child');
         document.querySelector('#finished-tasks > ul').insertBefore(el_clone, li);
       },
+      // 日付のフォーマット
       customFormatter(date) {
         return moment(date).format('YYYY/MM/DD');
       }
