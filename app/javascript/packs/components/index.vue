@@ -3,8 +3,11 @@
   <div>
     <!-- 新規作成部分 -->
     <div class="row margin-default">
-      <div class="col s10 m11">
-        <input v-model="newTask" id="new-task-form" class="form-control padding-default" placeholder="Add your task!!">
+      <div class="col s8 m9">
+        <input v-model="newTask" id="new-task-form" class="form-control padding-default" placeholder="ここにタスクを入力してください">
+      </div>
+      <div class="col s2 m2">
+        <datepicker id="new-task-deadline" :format="customFormatter" placeholder="期日"></datepicker>
       </div>
       <div class="col s2 m1">
         <button class="btn-floating waves-effect waves-light " v-on:click="createTask">
@@ -37,7 +40,12 @@
 
 <script>
   import axios from 'axios';
+  import Datepicker from 'vuejs-datepicker';
+  import moment from 'moment';
   export default {
+    components: {
+      'datepicker': Datepicker
+    },
     data: function () {
       return {
         tasks: [],
@@ -88,6 +96,9 @@
         el_clone.getElementsByTagName('label')[0].classList.remove('word-color-black');
         var li = document.querySelector('#finished-tasks > ul > li:first-child');
         document.querySelector('#finished-tasks > ul').insertBefore(el_clone, li);
+      },
+      customFormatter(date) {
+        return moment(date).format('YYYY/MM/DD');
       }
     }
   }
