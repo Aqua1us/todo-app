@@ -56,6 +56,7 @@
       this.fetchTasks();
     },
     methods: {
+      // タスクの表示
       fetchTasks: function () {
         axios.get('/api/tasks').then((response) => {
           for(var i = 0; i < response.data.tasks.length; i++) {
@@ -65,6 +66,7 @@
           console.log(error);
         });
       },
+      // タスクの登録
       createTask: function () {
         if (!this.newTask) return;
         axios.post('/api/tasks', { task: { name: this.newTask } }).then((response) => {
@@ -74,6 +76,7 @@
           console.log(error);
         });
       },
+      // タスクの完了
       doneTask: function (task_id) {
         axios.put('/api/tasks/' + task_id, { task: { is_done: 1 } }).then((response) => {
           this.moveFinishedTask(task_id);
@@ -81,9 +84,11 @@
           console.log(error);
         });
       },
+      // 完了済みタスクの表示
       displayFinishedTasks: function() {
         document.querySelector('#finished-tasks').classList.toggle('display_none');
       },
+      // 未完了タスクを完了済みタスクに移動
       moveFinishedTask: function(task_id) {
         var el = document.querySelector('#row_task_' + task_id);
         // DOMをクローンしておく
