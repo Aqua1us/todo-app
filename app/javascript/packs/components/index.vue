@@ -17,23 +17,38 @@
     </div>
     <!-- リスト表示部分 -->
     <div>
-      <ul class="collection">
-        <li v-bind:id="'row_task_' + task.id" class="collection-item" v-for="task in tasks" :key="task.id" v-if="!task.is_done">
-          <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" />
-          <label v-bind:for="'task_' + task.id" class="word-color-black">{{ task.name }}</label>
-        </li>
-      </ul>
+      <table class="highlight">
+        <thead>
+          <tr>
+            <th class="col s1"></th>
+            <th class="col s8">タスク名</th>
+            <th class="col s1">期日</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-bind:id="'row_task_' + task.id" class="collection-item" v-for="task in tasks" :key="task.id" v-if="!task.is_done">
+            <td >
+              <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" />
+              <label v-bind:for="'task_' + task.id" class="word-color-black"></label>
+            </td>
+            <td>{{ task.name }}</td>
+            <td>{{ "2019/06/18" }}</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
     <!-- 完了済みタスク表示ボタン -->
     <button class="btn btn-custom" v-on:click="displayFinishedTasks">完了済みタスク</button>
     <!-- 完了済みタスク一覧 -->
     <div id="finished-tasks" class="display_none">
+      <!--
       <ul class="collection">
         <li v-bind:id="'row_task_' + task.id" class="collection-item" v-for="task in tasks" :key="task.id" v-if="task.is_done">
           <input type="checkbox" v-bind:id="'task_' + task.id" checked="checked" />
           <label v-bind:for="'task_' + task.id"  class="line-through">{{ task.name }}</label>
         </li>
       </ul>
+      -->
     </div>
   </div>
 </template>

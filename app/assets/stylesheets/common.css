@@ -30,3 +30,8 @@
 .text-align-right {
     text-align: right
 }
+td:first-child,
+td:last-child {
+  width: 1px;
+  white-space: nowrap;
+}
