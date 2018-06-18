@@ -20,9 +20,10 @@
       <table class="highlight">
         <thead>
           <tr>
-            <th class="col s1"></th>
-            <th class="col s8">タスク名</th>
-            <th class="col s1">期日</th>
+            <th></th>
+            <th>タスク名</th>
+            <th>期日</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -33,6 +34,7 @@
             </td>
             <td>{{ task.name }}</td>
             <td>{{ customFormatter(task.deadline) }}</td>
+            <td><i class="material-icons">delete</i></td>
           </tr>
         </tbody>
       </table>
