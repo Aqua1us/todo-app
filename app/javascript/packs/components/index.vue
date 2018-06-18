@@ -27,30 +27,21 @@
           </tr>
         </thead>
         <tbody>
-          <tr v-bind:id="'row_task_' + task.id" class="collection-item" v-for="task in tasks" :key="task.id" v-if="!task.is_done">
+          <tr v-bind:id="'row_task_' + task.id" class="collection-item" v-for="task in tasks" :key="task.id">
             <td >
-              <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" />
+              <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" true-value="1" false-value="0" :checked="task.is_done"/>
               <label v-bind:for="'task_' + task.id" class="word-color-black"></label>
             </td>
             <td>{{ task.name }}</td>
             <td>{{ customFormatter(task.deadline) }}</td>
-            <td><i class="material-icons">delete</i></td>
+            <td>
+              <button class="btn-floating waves-effect waves-light grey" >
+                <i class="material-icons">delete</i>
+              </button>
+            </td>
           </tr>
         </tbody>
       </table>
-    </div>
-    <!-- 完了済みタスク表示ボタン -->
-    <button class="btn btn-custom" v-on:click="displayFinishedTasks">完了済みタスク</button>
-    <!-- 完了済みタスク一覧 -->
-    <div id="finished-tasks" class="display_none">
-      <!--
-      <ul class="collection">
-        <li v-bind:id="'row_task_' + task.id" class="collection-item" v-for="task in tasks" :key="task.id" v-if="task.is_done">
-          <input type="checkbox" v-bind:id="'task_' + task.id" checked="checked" />
-          <label v-bind:for="'task_' + task.id"  class="line-through">{{ task.name }}</label>
-        </li>
-      </ul>
-      -->
     </div>
   </div>
 </template>
@@ -97,11 +88,21 @@
       },
       // タスクの完了
       doneTask: function (task_id) {
-        axios.put('/api/tasks/' + task_id, { task: { is_done: 1 } }).then((response) => {
-          this.moveFinishedTask(task_id);
+        var el = document.querySelector('#task_' + task_id);
+        var done = el.checked ? 1 : 0;
+        axios.put('/api/tasks/' + task_id, { task: { is_done: done } }).then((response) => {
         }, (error) => {
           console.log(error);
         });
+      },
+      // タスクの削除
+      createTask: function () {
+        /*
+        axios.post('/api/tasks', { task: { name: this.newTask, deadline: this.deadLine } }).then((response) => {
+        }, (error) => {
+          console.log(error);
+        });
+        */
       },
       // 完了済みタスクの表示
       displayFinishedTasks: function() {
