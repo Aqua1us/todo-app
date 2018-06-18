@@ -31,7 +31,7 @@ class Api::TasksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
       params.fetch(:task, {}).permit(
-          :name, :is_done
+          :name, :is_done, :deadline
       )
     end
 end

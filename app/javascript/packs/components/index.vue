@@ -7,7 +7,7 @@
         <input v-model="newTask" id="new-task-form" class="form-control padding-default" placeholder="ここにタスクを入力してください">
       </div>
       <div class="col s2 m2">
-        <datepicker id="new-task-deadline" :format="customFormatter" placeholder="期日"></datepicker>
+        <datepicker v-model="deadLine" id="new-task-deadline" :format="customFormatter" placeholder="期日"></datepicker>
       </div>
       <div class="col s2 m1">
         <button class="btn-floating waves-effect waves-light " v-on:click="createTask">
@@ -32,7 +32,7 @@
               <label v-bind:for="'task_' + task.id" class="word-color-black"></label>
             </td>
             <td>{{ task.name }}</td>
-            <td>{{ "2019/06/18" }}</td>
+            <td>{{ customFormatter(task.deadline) }}</td>
           </tr>
         </tbody>
       </table>
@@ -64,7 +64,8 @@
     data: function () {
       return {
         tasks: [],
-        newTask: ''
+        newTask: '',
+        deadLine: '',
       }
     },
     mounted: function () {
@@ -84,9 +85,10 @@
       // タスクの登録
       createTask: function () {
         if (!this.newTask) return;
-        axios.post('/api/tasks', { task: { name: this.newTask } }).then((response) => {
+        axios.post('/api/tasks', { task: { name: this.newTask, deadline: this.deadLine } }).then((response) => {
           this.tasks.unshift(response.data.task);
           this.newTask = '';
+          this.deadLine = '';
         }, (error) => {
           console.log(error);
         });
@@ -119,7 +121,10 @@
       },
       // 日付のフォーマット
       customFormatter(date) {
-        return moment(date).format('YYYY/MM/DD');
+        if (moment(date).isValid()) {
+          return moment(date).format('YYYY/MM/DD');
+        }
+        return '';
       }
     }
   }
