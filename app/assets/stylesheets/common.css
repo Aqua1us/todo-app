@@ -30,25 +30,25 @@
 .text-align-right {
     text-align: right
 }
-td.fc-sun {
-    background-color: #ffebee;
-}
-td.fc-sat {
-    background-color: #e3f2fd;
-}
 th {
     background-color: #e0e0e0;
 }
+/*****************************************
+    FullCalendar
+*****************************************/
+/* カレンダーテーブル：日曜 */
+td.fc-sun {
+    background-color: #ffebee;
+}
+/* カレンダーテーブル：土曜 */
+td.fc-sat {
+    background-color: #e3f2fd;
+}
+/* ヘッダ */
 .fc h2 {
     font-size : 20px;
 }
+/* 開始時間 */
 .fc-time{
    display : none;
 }
-/*
-td:first-child,
-td:last-child {
-  width: 1px;
-  white-space: nowrap;
-}
-*/

@@ -16,10 +16,7 @@
         events: [],
         config: {
           defaultView: 'month',
-          weekends: true,
-          eventRender: function(event, element) {
-            console.log(event)
-          }
+          weekends: true
       },
       }
     },
