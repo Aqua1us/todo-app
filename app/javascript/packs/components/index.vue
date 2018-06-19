@@ -1,7 +1,6 @@
 
 <template>
   <div>
-    <full-calendar :config="config" :events="events"></full-calendar>
     <!-- 新規タスク入力 -->
     <div class="row margin-default">
       <div class="col s8 m9">
