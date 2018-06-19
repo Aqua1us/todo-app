@@ -3,11 +3,14 @@
   <div>
     <!-- 新規タスク入力 -->
     <div class="row margin-default">
-      <div class="col s8 m9">
+      <div class="col s8 m7">
         <input v-model="newTask" id="new-task-form" class="form-control padding-default" placeholder="ここにタスクを入力してください">
       </div>
       <div class="col s2 m2">
-        <datepicker v-model="deadLine" id="new-task-deadline" :format="customFormatter" placeholder="期日"></datepicker>
+        <datepicker v-model="startdate" id="new-task-startdate" :format="customFormatter" placeholder="開始日"></datepicker>
+      </div>
+      <div class="col s2 m2">
+        <datepicker v-model="enddate" id="new-task-enddate" :format="customFormatter" placeholder="終了日"></datepicker>
       </div>
       <div class="col s2 m1">
         <button class="btn-floating waves-effect waves-light " v-on:click="createTask">
@@ -22,7 +25,8 @@
           <tr>
             <th></th>
             <th>タスク名</th>
-            <th>期日</th>
+            <th>開始日</th>
+            <th>終了日</th>
             <th></th>
           </tr>
         </thead>
@@ -33,7 +37,8 @@
               <label v-bind:for="'task_' + task.id" class="word-color-black"></label>
             </td>
             <td>{{ task.name }}</td>
-            <td>{{ customFormatter(task.deadline) }}</td>
+            <td>{{ customFormatter(task.startdate) }}</td>
+            <td>{{ customFormatter(task.enddate) }}</td>
             <td>
               <button class="btn-floating waves-effect waves-light grey" v-on:click="destoryTask(task.id)">
                 <i class="material-icons">delete</i>
@@ -59,7 +64,8 @@
       return {
         tasks: [],
         newTask: '',
-        deadLine: '',
+        startdate: '',
+        enddate: '',
         events: [
         ],
         config: {
@@ -88,10 +94,11 @@
       // タスクの登録
       createTask: function () {
         if (!this.newTask) return;
-        axios.post('/api/tasks', { task: { name: this.newTask, deadline: this.deadLine } }).then((response) => {
+        axios.post('/api/tasks', { task: { name: this.newTask, startdate: this.startdate, enddate: this.enddate } }).then((response) => {
           this.tasks.unshift(response.data.task);
           this.newTask = '';
-          this.deadLine = '';
+          this.startdate = '';
+          this.enddate = '';
         }, (error) => {
           console.log(error);
         });

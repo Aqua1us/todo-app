@@ -42,6 +42,9 @@ th {
 .fc h2 {
     font-size : 20px;
 }
+.fc-time{
+   display : none;
+}
 /*
 td:first-child,
 td:last-child {

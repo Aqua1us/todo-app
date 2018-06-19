@@ -1,3 +1,3 @@
 json.set! :task do
-  json.extract! @task, :id, :name, :is_done, :created_at, :updated_at, :deadline
+  json.extract! @task, :id, :name, :is_done, :created_at, :updated_at, :startdate, :enddate
 end

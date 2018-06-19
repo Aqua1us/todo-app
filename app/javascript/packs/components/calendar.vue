@@ -13,10 +13,7 @@
     data: function () {
       return {
         tasks: [],
-        newTask: '',
-        deadLine: '',
-        events: [
-        ],
+        events: [],
         config: {
           defaultView: 'month',
           weekends: true,
@@ -30,7 +27,7 @@
       this.fetchEvents();
     },
     methods: {
-      // タスクの表示
+      // イベントの表示
       fetchEvents: function () {
         axios.get('/api/events').then((response) => {
           for(var i = 0; i < response.data.events.length; i++) {

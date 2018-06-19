@@ -2,7 +2,7 @@ class Api::TasksController < ApplicationController
 
   # GET /tasks
   def index
-    @tasks = Task.order('is_done', 'deadline IS NULL','deadline', 'updated_at DESC')
+    @tasks = Task.order('is_done', 'updated_at DESC')
   end
 
   # POST /tasks
@@ -40,7 +40,7 @@ class Api::TasksController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
       params.fetch(:task, {}).permit(
-        :name, :is_done, :deadline
+        :name, :is_done, :startdate, :enddate
       )
     end
 end
