@@ -30,8 +30,14 @@
 .text-align-right {
     text-align: right
 }
-th {
+td.fc-sun {
+    background-color: #ffebee;
+}
+td.fc-sat {
     background-color: #e3f2fd;
+}
+th {
+    background-color: #e0e0e0;
 }
 /*
 td:first-child,
