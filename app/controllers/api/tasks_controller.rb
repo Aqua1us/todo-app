@@ -26,11 +26,21 @@ class Api::TasksController < ApplicationController
     end
   end
 
+  # PATCH/DELETE /tasks/1
+  def destroy
+    @task = Task.find(params[:id])
+    if @task.destroy
+      render :show, status: :ok
+    else
+      render json: @task.errors, status: :unprocessable_entity
+    end
+  end
+
   private
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
       params.fetch(:task, {}).permit(
-          :name, :is_done, :deadline
+        :name, :is_done, :deadline
       )
     end
 end

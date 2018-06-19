@@ -1,7 +1,7 @@
 
 <template>
   <div>
-    <!-- 新規作成部分 -->
+    <!-- 新規タスク入力 -->
     <div class="row margin-default">
       <div class="col s8 m9">
         <input v-model="newTask" id="new-task-form" class="form-control padding-default" placeholder="ここにタスクを入力してください">
@@ -15,7 +15,7 @@
         </button>
       </div>
     </div>
-    <!-- リスト表示部分 -->
+    <!-- タスク一覧テーブル -->
     <div>
       <table class="highlight">
         <thead>
@@ -29,13 +29,13 @@
         <tbody>
           <tr v-bind:id="'row_task_' + task.id" class="collection-item" v-for="task in tasks" :key="task.id">
             <td >
-              <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" true-value="1" false-value="0" :checked="task.is_done"/>
+              <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" :checked="task.is_done"/>
               <label v-bind:for="'task_' + task.id" class="word-color-black"></label>
             </td>
             <td>{{ task.name }}</td>
             <td>{{ customFormatter(task.deadline) }}</td>
             <td>
-              <button class="btn-floating waves-effect waves-light grey" >
+              <button class="btn-floating waves-effect waves-light grey" v-on:click="destoryTask(task.id)">
                 <i class="material-icons">delete</i>
               </button>
             </td>
@@ -96,13 +96,13 @@
         });
       },
       // タスクの削除
-      createTask: function () {
-        /*
-        axios.post('/api/tasks', { task: { name: this.newTask, deadline: this.deadLine } }).then((response) => {
+      destoryTask: function (task_id) {
+        axios.delete('/api/tasks/' + task_id ).then((response) => {
+          var el = document.querySelector('#row_task_' + task_id);
+          el.classList.add('display_none');
         }, (error) => {
           console.log(error);
         });
-        */
       },
       // 完了済みタスクの表示
       displayFinishedTasks: function() {
