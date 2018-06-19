@@ -30,6 +30,9 @@
 .text-align-right {
     text-align: right
 }
+th {
+    background-color: #e3f2fd;
+}
 /*
 td:first-child,
 td:last-child {
