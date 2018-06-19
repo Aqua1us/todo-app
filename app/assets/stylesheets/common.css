@@ -13,9 +13,6 @@
 .collection-item:hover {
     background-color: #ddd;
 }
-.display_none {
-    display: none;
-}
 .line-through {
     text-decoration: line-through;
 }
@@ -27,12 +24,24 @@
     color: black;
     border-color: black;
 }
+/*****************************************
+    配置/表示
+*****************************************/
+/* 右寄せ */
 .text-align-right {
     text-align: right
 }
+/* 非表示 */
+.display_none {
+    display: none;
+}
+/*****************************************
+    Table
+*****************************************/
 th {
     background-color: #e0e0e0;
 }
+
 /*****************************************
     FullCalendar
 *****************************************/
@@ -51,4 +60,16 @@ td.fc-sat {
 /* 開始時間 */
 .fc-time{
    display : none;
+}
+
+/*****************************************
+    Transition
+*****************************************/
+.table-row-enter-active,
+.table-row-leave-active {
+  transition: opacity 2s
+}
+.table-row-enter,
+.table-row-leave-to {
+  opacity: 0
 }
