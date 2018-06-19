@@ -4,8 +4,10 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "axios": "^0.18.0",
+    "babel-preset-stage-2": "^6.24.1",
     "moment": "^2.22.2",
     "vue": "^2.5.16",
+    "vue-full-calendar": "^4.0.0-0",
     "vue-loader": "14.2.2",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.16",

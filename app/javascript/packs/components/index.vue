@@ -1,6 +1,7 @@
 
 <template>
   <div>
+    <full-calendar :config="config" :events="events"></full-calendar>
     <!-- 新規タスク入力 -->
     <div class="row margin-default">
       <div class="col s8 m9">
@@ -50,6 +51,7 @@
   import axios from 'axios';
   import Datepicker from 'vuejs-datepicker';
   import moment from 'moment';
+
   export default {
     components: {
       'datepicker': Datepicker
@@ -59,6 +61,15 @@
         tasks: [],
         newTask: '',
         deadLine: '',
+        events: [
+        ],
+        config: {
+          defaultView: 'month',
+          weekends: true,
+          eventRender: function(event, element) {
+            console.log(event)
+          }
+      },
       }
     },
     mounted: function () {
