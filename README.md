@@ -1,24 +1,23 @@
-# README
+# Todo管理アプリ（Vue.js + Ruby on Rails）
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+![todo-app](https://user-images.githubusercontent.com/32428472/41723883-3c6c6126-75a7-11e8-98f5-bcaedb6f8149.gif)
 
-Things you may want to cover:
+## Description
 
-* Ruby version
+Vue.js、Ruby on Rails の勉強を兼ねて、Todo管理アプリを作成しています。
 
-* System dependencies
+## Installation
 
-* Configuration
+```
+git clone https://github.com/amtkxa/todo-app.git
+cd todo-app
+bundle install
+yarn install
+rails db:migrate
+```
 
-* Database creation
+## Booting the app
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+rails s
+```
