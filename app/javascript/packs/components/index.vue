@@ -18,36 +18,32 @@
         </button>
       </div>
     </div>
-    <!-- タスク一覧テーブル -->
-    <div>
-      <table class="highlight">
-        <thead>
-          <tr>
-            <th></th>
-            <th>タスク名</th>
-            <th>開始日</th>
-            <th>終了日</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-bind:id="'row_task_' + task.id" class="collection-item" v-for="task in tasks" :key="task.id">
-            <td >
-              <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" :checked="task.is_done"/>
-              <label v-bind:for="'task_' + task.id" class="word-color-black"></label>
-            </td>
-            <td>{{ task.name }}</td>
-            <td>{{ customFormatter(task.startdate) }}</td>
-            <td>{{ customFormatter(task.enddate) }}</td>
-            <td>
-              <button class="btn-floating waves-effect waves-light grey" v-on:click="destoryTask(task.id)">
-                <i class="material-icons">delete</i>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+    <!-- 新規タスク入力 -->
+    <div class="row collection-header grid-header">
+      <div class="col s1 m1"></div>
+      <div class="col s6 m6">タスク名</div>
+      <div class="col s2 m2">開始日</div>
+      <div class="col s2 m2">終了日</div>
+      <div class="col s1 m1"></div>
     </div>
+    <transition-group tag="div" name="grid-row" class="collection middle">
+      <div v-bind:id="'row_task_' + task.id" class="collection-item" v-for="(task, index) in tasks" :key="task.id">
+        <div class="row">
+          <div class="col s1 m1">
+            <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" :checked="task.is_done"/>
+              <label v-bind:for="'task_' + task.id" class="word-color-black"></label>
+            </div>
+          <div class="col s6 m6">{{ task.name }}</div>
+          <div class="col s2 m2">{{ customFormatter(task.startdate) }}</div>
+          <div class="col s2 m2">{{ customFormatter(task.enddate) }}</div>
+          <div class="col s1 m1">
+            <button class="btn-floating waves-effect waves-light grey" v-on:click="destoryTask(task.id, index)">
+              <i class="material-icons">delete</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </transition-group>
   </div>
 </template>
 
@@ -113,10 +109,9 @@
         });
       },
       // タスクの削除
-      destoryTask: function (task_id) {
+      destoryTask: function (task_id, index) {
         axios.delete('/api/tasks/' + task_id ).then((response) => {
-          var el = document.querySelector('#row_task_' + task_id);
-          el.classList.add('display_none');
+          this.tasks.splice(index, 1);
         }, (error) => {
           console.log(error);
         });

@@ -24,6 +24,25 @@
     color: black;
     border-color: black;
 }
+.grid-header {
+    font-weight: bold;
+    background-color: #e1e1e1;
+    vertical-align: middle;
+    margin-top: 0px !important;
+    margin-right: 0px !important;
+    margin-left: 0px !important;
+    margin-bottom: 0px !important;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+}
+.grid-row {
+  margin: 0px;
+  vertical-align: middle;
+  /*padding: 16px;*/
+}
+.middle {
+    vertical-align: middle !important;
+}
 /*****************************************
     配置/表示
 *****************************************/
@@ -65,11 +84,29 @@ td.fc-sat {
 /*****************************************
     Transition
 *****************************************/
-.table-row-enter-active,
-.table-row-leave-active {
-  transition: opacity 2s
+.grid-row-enter-active,
+.grid-row-leave-active,
+.grid-row-move {
+  transition: 500ms cubic-bezier(0.59, 0.12, 0.34, 0.95);
+  transition-property: opacity, transform;
 }
-.table-row-enter,
-.table-row-leave-to {
-  opacity: 0
+
+.grid-row-enter {
+  opacity: 0;
+  transform: translateX(50px) scaleY(0.5);
+}
+
+.grid-row-enter-to {
+  opacity: 1;
+  transform: translateX(0) scaleY(1);
+}
+
+.grid-row-leave-active {
+  position: absolute;
+}
+
+.grid-row-leave-to {
+  opacity: 0;
+  transform: scaleY(0);
+  transform-origin: center top;
 }
