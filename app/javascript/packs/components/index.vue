@@ -19,20 +19,20 @@
       </div>
     </div>
     <!-- 新規タスク入力 -->
-    <div class="row collection-header grid-header">
+    <div class="row collection-header valign-wrapper grid-header margin-zero">
       <div class="col s1 m1"></div>
       <div class="col s6 m6">タスク名</div>
       <div class="col s2 m2">開始日</div>
       <div class="col s2 m2">終了日</div>
       <div class="col s1 m1"></div>
     </div>
-    <transition-group tag="div" name="grid-row" class="collection middle">
-      <div v-bind:id="'row_task_' + task.id" class="collection-item" v-for="(task, index) in tasks" :key="task.id">
-        <div class="row">
+    <transition-group tag="div" name="grid-row" >
+      <div v-for="(task, index) in tasks" class="collection margin-zero" v-bind:id="'row_task_' + task.id" :key="task.id">
+        <div class="row collection-item valign-wrapper">
           <div class="col s1 m1">
             <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" :checked="task.is_done"/>
-              <label v-bind:for="'task_' + task.id" class="word-color-black"></label>
-            </div>
+            <label v-bind:for="'task_' + task.id" class=""></label>
+          </div>
           <div class="col s6 m6">{{ task.name }}</div>
           <div class="col s2 m2">{{ customFormatter(task.startdate) }}</div>
           <div class="col s2 m2">{{ customFormatter(task.enddate) }}</div>

@@ -16,6 +16,9 @@
 .line-through {
     text-decoration: line-through;
 }
+.margin-zero {
+    margin: 0px !important;
+}
 .btn-custom {
     text-transform: none;
     padding: 0 10px;
@@ -26,22 +29,9 @@
 }
 .grid-header {
     font-weight: bold;
-    background-color: #e1e1e1;
-    vertical-align: middle;
-    margin-top: 0px !important;
-    margin-right: 0px !important;
-    margin-left: 0px !important;
-    margin-bottom: 0px !important;
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
-}
-.grid-row {
-  margin: 0px;
-  vertical-align: middle;
-  /*padding: 16px;*/
-}
-.middle {
-    vertical-align: middle !important;
+    background-color: #c1d3ff;
+    padding-top: 15px ;
+    padding-bottom: 15px ;
 }
 /*****************************************
     配置/表示
