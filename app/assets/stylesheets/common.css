@@ -70,7 +70,18 @@ td.fc-sat {
 .fc-time{
    display : none;
 }
-
+/* カレンダーボタン（月） */
+.fc-month-button{
+    display : none;
+}
+/* カレンダーボタン（週） */
+.fc-agendaWeek-button{
+    display : none;
+}
+/* カレンダーボタン（日） */
+.fc-agendaDay-button{
+    display : none;
+}
 /*****************************************
     Transition
 *****************************************/
