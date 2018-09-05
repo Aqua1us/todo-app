@@ -1,4 +1,4 @@
-import Vue from 'vue/dist/vue.esm.js'
+import Vue from 'vue'
 import Router from './router/router'
 import Header from './components/header.vue'
 import FullCalendar from 'vue-full-calendar';
