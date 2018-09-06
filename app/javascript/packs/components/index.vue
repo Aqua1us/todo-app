@@ -26,8 +26,10 @@
       <div class="col s2 m2">終了日</div>
       <div class="col s1 m1"></div>
     </div>
+    <!--
     <transition-group tag="div" name="grid-row" >
-      <div v-for="(task, index) in tasks" class="collection margin-zero" v-bind:id="'row_task_' + task.id" :key="task.id">
+    -->
+      <div v-for="(task, index) in this.$store.getters.allTasks" class="collection margin-zero" v-bind:id="'row_task_' + task.id" :key="task.id">
         <div class="row collection-item valign-wrapper">
           <div class="col s1 m1">
             <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" :checked="task.is_done"/>
@@ -43,7 +45,9 @@
           </div>
         </div>
       </div>
+    <!--
     </transition-group>
+    -->
   </div>
 </template>
 
@@ -51,6 +55,7 @@
   import axios from 'axios';
   import Datepicker from 'vuejs-datepicker';
   import moment from 'moment';
+  import { mapState, mapActions } from 'vuex'
 
   export default {
     components: {
@@ -80,18 +85,16 @@
       // タスクの表示
       fetchTasks: function () {
         axios.get('/api/tasks').then((response) => {
-          for(var i = 0; i < response.data.tasks.length; i++) {
-            this.tasks.push(response.data.tasks[i]);
-          }
+          this.$store.commit('setTasks', response.data.tasks)
         }, (error) => {
-          console.log(error);
-        });
+          console.log(error)
+        })
       },
       // タスクの登録
       createTask: function () {
         if (!this.newTask) return;
         axios.post('/api/tasks', { task: { name: this.newTask, startdate: this.startdate, enddate: this.enddate } }).then((response) => {
-          this.tasks.unshift(response.data.task);
+          this.$store.commit('addTask', response.data.task)
           this.newTask = '';
           this.startdate = '';
           this.enddate = '';
@@ -111,7 +114,7 @@
       // タスクの削除
       destoryTask: function (task_id, index) {
         axios.delete('/api/tasks/' + task_id ).then((response) => {
-          this.tasks.splice(index, 1);
+          this.$store.commit('deleteTask', index)
         }, (error) => {
           console.log(error);
         });
