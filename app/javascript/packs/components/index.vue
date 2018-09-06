@@ -26,9 +26,7 @@
       <div class="col s2 m2">終了日</div>
       <div class="col s1 m1"></div>
     </div>
-    <!--
     <transition-group tag="div" name="grid-row" >
-    -->
       <div v-for="(task, index) in this.$store.getters.allTasks" class="collection margin-zero" v-bind:id="'row_task_' + task.id" :key="task.id">
         <div class="row collection-item valign-wrapper">
           <div class="col s1 m1">
@@ -45,9 +43,7 @@
           </div>
         </div>
       </div>
-    <!--
     </transition-group>
-    -->
   </div>
 </template>
 
