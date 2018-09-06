@@ -1,10 +1,6 @@
 export default {
   state: {
-    tasks: [
-      { name: 'task1 (from state)', startdate: '', enddate: '' },
-      { name: 'task2 (from state)', startdate: '', enddate: '' }
-    ],
-    message: 'this is tasks message'
+    tasks: []
   },
   getters: {
     allTasks: state => state.tasks
