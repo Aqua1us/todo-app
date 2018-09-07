@@ -19,7 +19,6 @@
           <input placeholder="メモ" type="text" id="memo" ref="memo">
           <label for="memo" class="active">メモ</label>
         </div>
-        <input type="text" id="is_done" ref="is_done">
       </div>
     </form>
   </div>
@@ -42,7 +41,6 @@
       showTask: function (task_id) {
         axios.get('/api/tasks/' + task_id).then((response) => {
           this.$refs.name.value = response.data.task.name
-          this.$refs.is_done.value = response.data.task.is_done
           this.$refs.startdate.value = response.data.task.startdate
           this.$refs.enddate.value = response.data.task.enddate
         }, (error) => {
