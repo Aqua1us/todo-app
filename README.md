@@ -19,5 +19,5 @@ rails db:migrate
 ## Booting the app
 
 ```
-rails s
+bin/server
 ```
