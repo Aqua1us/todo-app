@@ -5,6 +5,11 @@ class Api::TasksController < ApplicationController
     @tasks = Task.order('is_done', 'startdate ASC')
   end
 
+  # GET /tasks/1
+  def show
+    @task = Task.find(params[:id])
+  end
+
   # POST /tasks
   def create
     @task = Task.new(task_params)

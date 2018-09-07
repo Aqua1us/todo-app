@@ -113,10 +113,6 @@
           console.log(error);
         });
       },
-      // タスクの編集
-      editTask: function (task_id, index) {
-        
-      },
       // タスクの削除
       destoryTask: function (task_id, index) {
         axios.delete('/api/tasks/' + task_id ).then((response) => {
