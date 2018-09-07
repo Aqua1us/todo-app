@@ -38,10 +38,8 @@
           <div class="col s12 m2">{{ customFormatter(task.startdate) }}</div>
           <div class="col s12 m2">{{ customFormatter(task.enddate) }}</div>
           <div class="col s12 m1">
-            <router-link :to="{ name:'edit', params:{task_id:task.id} }">
-              <button class="btn-floating waves-effect waves-light grey">
-                <i class="material-icons">edit</i>
-              </button>
+            <router-link tag="button" class="btn-floating waves-effect waves-light grey" :to="{ name:'edit', params:{task_id:task.id} }">
+              <i class="material-icons">edit</i>
             </router-link>
           </div>
           <div class="col s12 m1">
