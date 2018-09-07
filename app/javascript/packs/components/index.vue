@@ -7,10 +7,10 @@
         <input v-model="newTask" id="new-task-form" class="form-control padding-default" placeholder="ここにタスクを入力してください">
       </div>
       <div class="col s12 m2">
-        <datepicker v-model="startdate" id="new-task-startdate" :format="customFormatter" placeholder="開始日"></datepicker>
+        <datepicker v-model="startdate" id="new-task-startdate" :format="this.customFormatter" placeholder="開始日"></datepicker>
       </div>
       <div class="col s12 m2">
-        <datepicker v-model="enddate" id="new-task-enddate" :format="customFormatter" placeholder="終了日"></datepicker>
+        <datepicker v-model="enddate" id="new-task-enddate" :format="this.customFormatter" placeholder="終了日"></datepicker>
       </div>
       <div class="col s12 m2">
         <button class="btn-floating waves-effect waves-light " v-on:click="createTask">
@@ -138,13 +138,6 @@
         el_clone.getElementsByTagName('label')[0].classList.remove('word-color-black');
         var li = document.querySelector('#finished-tasks > ul > li:first-child');
         document.querySelector('#finished-tasks > ul').insertBefore(el_clone, li);
-      },
-      // 日付のフォーマット
-      customFormatter(date) {
-        if (moment(date).isValid()) {
-          return moment(date).format('YYYY/MM/DD');
-        }
-        return '';
       }
     }
   }

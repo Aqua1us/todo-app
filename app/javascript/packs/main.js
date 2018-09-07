@@ -6,9 +6,11 @@ import Router from './router/router'
 import Store from './store'
 import Header from './components/header.vue'
 import FullCalendar from 'vue-full-calendar'
+import common from './common/util'
 
 Vue.use(FullCalendar)
 Vue.use(ElementUI, { locale })
+Vue.mixin(common)
 Vue.config.productionTip = false
 
 new Vue({ // eslint-disable-line no-new
