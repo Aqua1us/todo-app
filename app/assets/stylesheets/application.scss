@@ -19,3 +19,7 @@ $primary-color: color("deep-purple", "darken-2") !default;
 $secondary-color: color("blue", "lighten-2") !default;
 @import 'materialize';
 @import 'material_icons';
+@import 'materialize';
+
+// @import "~element-ui/lib/theme-default/index.css"
+// @import '~element-ui/lib/theme-chalk/index.css'

@@ -4,17 +4,22 @@
   "dependencies": {
     "@rails/webpacker": "3.5",
     "axios": "^0.18.0",
-    "babel-preset-stage-2": "^6.24.1",
+    "element-ui": "^2.4.6",
     "moment": "^2.22.2",
+    "style-loader": "^0.23.0",
+    "url-loader": "^1.1.1",
     "vue": "^2.5.16",
     "vue-full-calendar": "^4.0.0-0",
     "vue-loader": "14.2.2",
     "vue-router": "^3.0.1",
     "vue-template-compiler": "^2.5.16",
     "vuejs-datepicker": "^1.4.0",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "webpack-merge": "^4.1.4"
   },
   "devDependencies": {
+    "babel-plugin-component": "^1.1.1",
+    "babel-preset-stage-2": "^6.24.1",
     "eslint": "^5.5.0",
     "eslint-config-standard": "^12.0.0",
     "eslint-plugin-import": "^2.14.0",
