@@ -3,40 +3,48 @@
   <div>
     <!-- 新規タスク入力 -->
     <div class="row margin-default">
-      <div class="col s8 m7">
+      <div class="col s12 m6">
         <input v-model="newTask" id="new-task-form" class="form-control padding-default" placeholder="ここにタスクを入力してください">
       </div>
-      <div class="col s2 m2">
+      <div class="col s12 m2">
         <datepicker v-model="startdate" id="new-task-startdate" :format="customFormatter" placeholder="開始日"></datepicker>
       </div>
-      <div class="col s2 m2">
+      <div class="col s12 m2">
         <datepicker v-model="enddate" id="new-task-enddate" :format="customFormatter" placeholder="終了日"></datepicker>
       </div>
-      <div class="col s2 m1">
+      <div class="col s12 m2">
         <button class="btn-floating waves-effect waves-light " v-on:click="createTask">
-          <i class="material-icons">create</i>
+          <i class="material-icons">add</i>
         </button>
       </div>
     </div>
     <!-- 新規タスク入力 -->
     <div class="row collection-header valign-wrapper grid-header margin-zero">
-      <div class="col s1 m1"></div>
-      <div class="col s6 m6">タスク名</div>
-      <div class="col s2 m2">開始日</div>
-      <div class="col s2 m2">終了日</div>
-      <div class="col s1 m1"></div>
+      <div class="col s12 m1"></div>
+      <div class="col s12 m5">タスク名</div>
+      <div class="col s12 m2">開始日</div>
+      <div class="col s12 m2">終了日</div>
+      <div class="col s12 m1"></div>
+      <div class="col s12 m1"></div>
     </div>
     <transition-group tag="div" name="grid-row" >
       <div v-for="(task, index) in this.$store.getters.allTasks" class="collection margin-zero" v-bind:id="'row_task_' + task.id" :key="task.id">
         <div class="row collection-item valign-wrapper">
-          <div class="col s1 m1">
+          <div class="col s12 m1">
             <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" :checked="task.is_done"/>
             <label v-bind:for="'task_' + task.id" class=""></label>
           </div>
-          <div class="col s6 m6">{{ task.name }}</div>
-          <div class="col s2 m2">{{ customFormatter(task.startdate) }}</div>
-          <div class="col s2 m2">{{ customFormatter(task.enddate) }}</div>
-          <div class="col s1 m1">
+          <div class="col s12 m5">{{ task.name }}</div>
+          <div class="col s12 m2">{{ customFormatter(task.startdate) }}</div>
+          <div class="col s12 m2">{{ customFormatter(task.enddate) }}</div>
+          <div class="col s12 m1">
+            <router-link :to="{ name:'edit', params:{task_id:task.id} }">
+              <button class="btn-floating waves-effect waves-light grey">
+                <i class="material-icons">edit</i>
+              </button>
+            </router-link>
+          </div>
+          <div class="col s12 m1">
             <button class="btn-floating waves-effect waves-light grey" v-on:click="destoryTask(task.id, index)">
               <i class="material-icons">delete</i>
             </button>
@@ -106,6 +114,10 @@
         }, (error) => {
           console.log(error);
         });
+      },
+      // タスクの編集
+      editTask: function (task_id, index) {
+        
       },
       // タスクの削除
       destoryTask: function (task_id, index) {
