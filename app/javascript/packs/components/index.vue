@@ -3,14 +3,17 @@
   <div>
     <!-- 新規タスク入力 -->
     <div class="row margin-default">
-      <div class="col s12 m6">
-        <input v-model="newTask" id="new-task-form" class="form-control padding-default" placeholder="ここにタスクを入力してください">
+      <div class="input-field col s12 m6">
+        <input v-model="newTask" id="new-task-name" class="form-control padding-default" placeholder="ここにタスクを入力してください">
+        <label for="new-task-name" class="active">タスク名</label>
       </div>
-      <div class="col s12 m2">
+      <div class="input-field col s12 m2">
         <datepicker v-model="startdate" id="new-task-startdate" :format="this.customFormatter" placeholder="開始日"></datepicker>
+        <label for="new-task-startdate" class="active">開始日</label>
       </div>
-      <div class="col s12 m2">
+      <div class="input-field col s12 m2">
         <datepicker v-model="enddate" id="new-task-enddate" :format="this.customFormatter" placeholder="終了日"></datepicker>
+        <label for="new-task-enddate" class="active">終了日</label>
       </div>
       <div class="col s12 m2">
         <button class="btn-floating waves-effect waves-light " v-on:click="createTask">
