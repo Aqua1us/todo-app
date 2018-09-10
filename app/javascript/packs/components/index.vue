@@ -16,9 +16,7 @@
         <label for="new-task-enddate" class="active">終了日</label>
       </div>
       <div class="col s12 m2">
-        <button class="btn-floating waves-effect waves-light " v-on:click="createTask">
-          <i class="material-icons">add</i>
-        </button>
+        <el-button type="primary" icon="el-icon-plus" v-on:click="createTask" circle></el-button>
       </div>
     </div>
     <!-- 新規タスク入力 -->
@@ -41,14 +39,12 @@
           <div class="col s12 m2">{{ customFormatter(task.startdate) }}</div>
           <div class="col s12 m2">{{ customFormatter(task.enddate) }}</div>
           <div class="col s12 m1">
-            <router-link tag="button" class="btn-floating waves-effect waves-light grey" :to="{ name:'edit', params:{task_id:task.id} }">
-              <i class="material-icons">edit</i>
+            <router-link :to="{ name:'edit', params:{task_id:task.id} }">
+              <el-button type="primary" icon="el-icon-edit" plain circle></el-button>
             </router-link>
           </div>
           <div class="col s12 m1">
-            <button class="btn-floating waves-effect waves-light grey" v-on:click="destoryTask(task.id, index)">
-              <i class="material-icons">delete</i>
-            </button>
+            <el-button type="primary" icon="el-icon-delete"  v-on:click="destoryTask(task.id, index)" plain circle></el-button>
           </div>
         </div>
       </div>

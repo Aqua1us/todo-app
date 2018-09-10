@@ -1,6 +1,5 @@
 <template>
   <div class="row">
-    <router-link :to="{ path:'/'}">戻る</router-link>
     <form class="col s12">
       <div class="row">
         <div class="input-field col s12">
@@ -19,10 +18,13 @@
           <input id="memo" v-model="memo" placeholder="メモ" type="text">
           <label for="memo" class="active">メモ</label>
         </div>
-        <div class="input-field col s12">
-          <button class="btn waves-effect waves-light" v-on:click="updateTask" >
-            保存する<i class="material-icons right">save</i>
-          </button>
+        <div class="input-field col s2">
+          <router-link :to="{ path:'/'}">
+            <el-button type="info" icon="el-icon-back"  v-on:click="updateTask" plain>戻る</el-button>
+          </router-link>
+        </div>
+        <div class="input-field col s2">
+          <el-button type="primary" icon="el-icon-document"  v-on:click="updateTask" plain>保存</el-button>
         </div>
       </div>
     </form>
