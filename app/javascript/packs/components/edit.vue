@@ -20,7 +20,7 @@
         </div>
         <div class="input-field col s2">
           <router-link :to="{ path:'/'}">
-            <el-button type="info" icon="el-icon-back"  v-on:click="updateTask" plain>戻る</el-button>
+            <el-button type="info" icon="el-icon-back" plain>戻る</el-button>
           </router-link>
         </div>
         <div class="input-field col s2">
@@ -69,12 +69,21 @@
       },
       // タスクの保存
       updateTask: function () {
-        let task_id = this.$store.getters.editTaskId
-        axios.put('/api/tasks/' + task_id, { task: { name: this.name, startdate: this.startdate, enddate: this.enddate, memo: this.memo } }).then((response) => {
-        }, (error) => {
-          console.log(error);
+        this.$confirm('保存しますか？', {
+          confirmButtonText: 'はい',
+          cancelButtonText: 'いいえ'
+        }).then(() => {
+          let task_id = this.$store.getters.editTaskId
+          axios.put('/api/tasks/' + task_id, { task: { name: this.name, startdate: this.startdate, enddate: this.enddate, memo: this.memo } }).then((response) => {
+          this.$message({type: 'success', message: '保存しました。'})
+          }, (error) => {
+            this.$message({type: 'error', message: '保存に失敗しました'})
+            console.log(error);
+          });
+        }).catch(() => {
+          this.$message({type: 'info', message: 'キャンセルしました。'})
         });
-      },
+      }
     }
   }
 </script>
