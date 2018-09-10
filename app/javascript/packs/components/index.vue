@@ -31,7 +31,7 @@
       <div class="col s12 m1"></div>
     </div>
     <transition-group tag="div" name="grid-row" >
-      <div v-for="(task, index) in this.$store.getters.allTasks" class="collection margin-zero" v-bind:id="'row_task_' + task.id" :key="task.id">
+      <div v-for="(task, index) in taskList" class="collection margin-zero" v-bind:id="'row_task_' + task.id" :key="task.id">
         <div class="row collection-item valign-wrapper">
           <div class="col s12 m1">
             <input type="checkbox" v-bind:id="'task_' + task.id" v-on:change="doneTask(task.id)" :checked="task.is_done"/>
@@ -81,6 +81,11 @@
             console.log(event)
           }
       },
+      }
+    },
+    computed: {
+      taskList() {
+        return this.$store.getters.allTasks
       }
     },
     mounted: function () {
