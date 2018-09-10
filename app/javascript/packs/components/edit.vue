@@ -16,7 +16,7 @@
           <label for="enddate" class="active"> 終了日</label>
         </div>
         <div class="input-field col s12">
-          <input id="memo" placeholder="メモ" type="text">
+          <input id="memo" v-model="memo" placeholder="メモ" type="text">
           <label for="memo" class="active">メモ</label>
         </div>
         <div class="input-field col s12">
@@ -60,6 +60,7 @@
           this.name = response.data.task.name
           this.startdate = response.data.task.startdate
           this.enddate = response.data.task.enddate
+          this.memo = response.data.task.memo
         }, (error) => {
           console.log(error)
         })
@@ -67,7 +68,7 @@
       // タスクの保存
       updateTask: function () {
         let task_id = this.$store.getters.editTaskId
-        axios.put('/api/tasks/' + task_id, { task: { name: this.name, startdate: this.startdate, enddate: this.enddate } }).then((response) => {
+        axios.put('/api/tasks/' + task_id, { task: { name: this.name, startdate: this.startdate, enddate: this.enddate, memo: this.memo } }).then((response) => {
         }, (error) => {
           console.log(error);
         });
