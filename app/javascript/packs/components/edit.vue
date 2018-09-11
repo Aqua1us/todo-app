@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <form class="col s12">
+    <form class="col s12" autocomplete="off">
       <div class="row">
         <div class="input-field col s12">
           <input id="name" v-model="name" placeholder="タスク名" type="text">
